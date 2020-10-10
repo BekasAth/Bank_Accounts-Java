@@ -4,20 +4,20 @@ public class Checkings extends Account{
 	int count = 0;
 	
 	
-	public Checkings(double amount){
+	public Checkings(String iban, double amount){
 		
-		super(amount);
+		super(iban, amount);
 	}
+	
 	
 	public void deposit(double amount) {
 		
-		super.deposit(balance);
 		
 		if(count + 1 > 3) {
 			
-			if (balance + amount - 2 >= 0) {
+			if (balance + amount >=  2*((count-3) + 1)) {
 				
-				balance = balance + amount - 2;
+				balance = balance + amount;
 				count++;
 			}else {
 				
@@ -30,16 +30,15 @@ public class Checkings extends Account{
 		}
 	}
 	
+	
 	public void withdrawal(double amount) {
-		
-		super.deposit(balance); 
 		
 		
 		if (count + 1 > 3) {
 			
-			if (balance >= amount + 2) {
+			if (balance >= amount + 2*(count + 1)) {
 				
-				balance = balance - amount - 2;
+				balance = balance - amount;
 				count++;
 			}else {
 				
@@ -50,6 +49,7 @@ public class Checkings extends Account{
 			if (balance >= amount) {
 				
 				balance = balance - amount;
+				count++;
 			}else {
 				
 				System.out.println("Not enough nomey");
@@ -58,6 +58,16 @@ public class Checkings extends Account{
 	}
 	
 	
+	public void nextMonth() {
+		
+		if(count>3) {
+			
+			balance = balance - 2*(count - 3);
+			count = 0;
+		}
+		
+		count = 0;	
+	}	
 	
 
 }
