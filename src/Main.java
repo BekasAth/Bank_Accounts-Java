@@ -4,6 +4,8 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+		//Some examples for checking purpose...
+		
 		Savings a1 = new Savings("a1",0.5);
 		Checkings a2 = new Checkings("a2",100);
 		
